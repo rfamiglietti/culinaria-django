@@ -19,15 +19,16 @@
             </button>
 
         </form>
+        {% for categoria in categorias_choices %}
+                <a href="{% url 'categoria' categoria %}" class="text-gray-300 hover:text-white mx-2">{{ categoria|capfirst }}</a>
+            {% endfor %}
     </section>
 
-
-<!-- Lista de receita -->
 <h2 class="text-2xl font-semibold mb-6 text-center mt-8">Receitas Recentes</h2>
     <div class="flex flex-wrap justify-center gap-6">
         {% for receita in receitas %}
         <div class="w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
-              {% if receitas.image %}
+            {% if receita.image %}
             <img src="{{ receita.image.url }}" alt="Imagem de {{ receita.title }}" class="w-full h-48 object-cover rounded-md mb-4" />
             {% endif %}
             <h3 class="text-xl font-bold mb-2 text-gray-800">{{ receita.title }}</h3>
